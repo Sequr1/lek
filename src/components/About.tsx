@@ -16,7 +16,7 @@ export default function About() {
             style={{ borderRadius: '2px' }}
           >
             <img
-              src="/ava.png"
+              src="/ava.jpg"
               alt="Анатолий"
               className="w-full h-full object-cover"
               style={{ filter: 'grayscale(30%) contrast(1.05)' }}
