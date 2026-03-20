@@ -6,15 +6,26 @@ export default function Contact() {
   const [sent, setSent] = useState(false);
 
   const [name, setName] = useState('');
-  const [contact, setContact] = useState('');
+  const [telegram, setTelegram] = useState('');
+  const [phone, setPhone] = useState('');
+  const [vk, setVk] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // ✅ проверка: хотя бы одно поле контакта
+    if (!telegram && !phone && !vk) {
+      alert('Укажите хотя бы один способ связи');
+      return;
+    }
+
     const message = `
 Новая заявка:
 Имя: ${name}
-Контакт: ${contact}
+
+Telegram: ${telegram || 'не указано'}
+Телефон: ${phone || 'не указано'}
+VK: ${vk || 'не указано'}
     `;
 
     try {
@@ -94,13 +105,50 @@ export default function Contact() {
               }}
             />
 
-            {/* КОНТАКТ */}
+            {/* ПОДСКАЗКА */}
+            <p
+              className="text-[11px] text-left"
+              style={{ color: 'var(--gray-mid)' }}
+            >
+              Оставьте любой удобный способ связи
+            </p>
+
+            {/* TELEGRAM */}
             <input
               type="text"
-              placeholder="Telegram или телефон"
-              required
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
+              placeholder="Telegram (например @username)"
+              value={telegram}
+              onChange={(e) => setTelegram(e.target.value)}
+              className="w-full px-0 py-3 bg-transparent border-b text-sm tracking-wide outline-none transition-colors duration-500 focus:border-gray-500"
+              style={{
+                borderColor: 'var(--gray-dark)',
+                color: 'var(--white-warm)',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 300,
+              }}
+            />
+
+            {/* ТЕЛЕФОН */}
+            <input
+              type="text"
+              placeholder="Телефон"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full px-0 py-3 bg-transparent border-b text-sm tracking-wide outline-none transition-colors duration-500 focus:border-gray-500"
+              style={{
+                borderColor: 'var(--gray-dark)',
+                color: 'var(--white-warm)',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 300,
+              }}
+            />
+
+            {/* VK */}
+            <input
+              type="text"
+              placeholder="ВКонтакте (ссылка или id)"
+              value={vk}
+              onChange={(e) => setVk(e.target.value)}
               className="w-full px-0 py-3 bg-transparent border-b text-sm tracking-wide outline-none transition-colors duration-500 focus:border-gray-500"
               style={{
                 borderColor: 'var(--gray-dark)',
