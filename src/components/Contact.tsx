@@ -13,7 +13,6 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // ✅ проверка: хотя бы одно поле контакта
     if (!telegram && !phone && !vk) {
       alert('Укажите хотя бы один способ связи');
       return;
@@ -89,7 +88,6 @@ VK: ${vk || 'не указано'}
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-5 mb-10">
 
-            {/* ИМЯ */}
             <input
               type="text"
               placeholder="Имя"
@@ -105,7 +103,6 @@ VK: ${vk || 'не указано'}
               }}
             />
 
-            {/* ПОДСКАЗКА */}
             <p
               className="text-[11px] text-left"
               style={{ color: 'var(--gray-mid)' }}
@@ -113,7 +110,6 @@ VK: ${vk || 'не указано'}
               Оставьте любой удобный способ связи
             </p>
 
-            {/* TELEGRAM */}
             <input
               type="text"
               placeholder="Telegram (например @username)"
@@ -128,7 +124,6 @@ VK: ${vk || 'не указано'}
               }}
             />
 
-            {/* ТЕЛЕФОН */}
             <input
               type="text"
               placeholder="Телефон"
@@ -143,7 +138,6 @@ VK: ${vk || 'не указано'}
               }}
             />
 
-            {/* VK */}
             <input
               type="text"
               placeholder="ВКонтакте (ссылка или id)"
@@ -160,6 +154,7 @@ VK: ${vk || 'не указано'}
 
             <button
               type="submit"
+              data-beam="end"
               className="mt-4 py-3 px-8 text-xs tracking-[0.25em] uppercase btn-gold-glow"
               style={{
                 border: '1px solid var(--gray-mid)',
@@ -179,6 +174,37 @@ VK: ${vk || 'не указано'}
           Малые группы — не более 5 человек.
         </p>
 
+        <div
+          className="w-8 h-px mx-auto mb-8"
+          style={{ background: 'var(--gray-dark)' }}
+        />
+
+        <a
+          href="https://t.me/searchernov"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 group transition-all duration-500"
+          style={{ color: 'var(--gray-text)' }}
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="transition-colors duration-500 group-hover:stroke-white"
+          >
+            <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 7.5a2.25 2.25 0 0 0 .126 4.303l3.698 1.057 2 5.492a1.5 1.5 0 0 0 2.545.441l2.08-2.428 4.17 3.108a2.25 2.25 0 0 0 3.46-1.201l3.22-15.87a2.25 2.25 0 0 0-3.777-2.617z" />
+          </svg>
+          <span
+            className="text-xs tracking-[0.15em] transition-colors duration-500 group-hover:text-white"
+          >
+            Написать в Telegram
+          </span>
+        </a>
       </div>
     </section>
   );
